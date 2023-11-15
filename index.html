@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Rotator</title>
+    <style>
+        body {
+            background-color: #123;
+        }
+        #ad {
+            border: 1px solid gray;
+            color: white;
+            padding: 1em;
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+    <div id="ad">
+       
+    </div>
+
+    <script>
+        let adTitles = [
+            "this is the first",
+            "this is the second",
+            "this is the third"
+        ];
+        let adTexts = [
+            "text first",
+            "text second",
+            "text third"
+        ];
+
+        // h1 create another array, with the images for each ad rotate the images in sync with texts
+        // h2 add an array of image sources
+        let adImages = [
+            "image1.jpeg",
+            "image2.jpeg",
+            "image3.jpeg"
+        ];
+
+        let adIndex = 0;
+
+        function showAd() {
+            ad.innerHTML = `<h1>${adTitles[adIndex]}</h1>
+                            <p>${adTexts[adIndex]}</p>
+                            <img src="${adImages[adIndex]}" alt="Ad Image">`; // h3 display the image
+        }
+
+        function rotateAds() {
+            let lastTitle = adTitles.pop();
+            adTitles.unshift(lastTitle);
+
+            let lastText = adTexts.pop();
+            adTexts.unshift(lastText);
+
+            let lastImage = adImages.pop();
+            adImages.unshift(lastImage);
+
+            showAd();
+        }
+
+        setInterval(rotateAds, 3000);
+        showAd();
+    </script>
+</body>
+</html>
